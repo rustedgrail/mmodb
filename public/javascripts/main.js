@@ -5,6 +5,18 @@
         , moar: "gaem"
     };
 
+    window.openDb = openDb;
+    function openDb() {
+        var request = indexedDb.open('mmodb', 1);
+        request.onerror = function(event) {
+            console.log("ERR");
+        };
+
+        request.onsuccess = function(event) {
+            var db = request.result;
+        };
+    }
+
     function createPeer() {
         var query = parseQuery();
         var peer = new Peer(query.me, {key: 'm8k5mfew7wlv7vi'});
